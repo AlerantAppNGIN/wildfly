@@ -53,6 +53,7 @@ class ServerDefinition extends PersistentResourceDefinition {
             AjpListenerResourceDefinition.INSTANCE,
             HttpListenerResourceDefinition.INSTANCE,
             HttpsListenerResourceDefinition.INSTANCE,
+            UdpListenerResourceDefinition.INSTANCE,
             HostDefinition.INSTANCE);
 
     static final ServerDefinition INSTANCE = new ServerDefinition();

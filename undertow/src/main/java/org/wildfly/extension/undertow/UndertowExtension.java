@@ -54,6 +54,7 @@ public class UndertowExtension implements Extension {
     protected static final PathElement AJP_LISTENER_PATH = PathElement.pathElement(Constants.AJP_LISTENER);
     protected static final PathElement HOST_PATH = PathElement.pathElement(Constants.HOST);
     protected static final PathElement HTTP_LISTENER_PATH = PathElement.pathElement(Constants.HTTP_LISTENER);
+    protected static final PathElement UDP_LISTENER_PATH = PathElement.pathElement(Constants.UDP_LISTENER);
     protected static final PathElement HTTPS_LISTENER_PATH = PathElement.pathElement(Constants.HTTPS_LISTENER);
     protected static final PathElement PATH_SERVLET_CONTAINER = PathElement.pathElement(Constants.SERVLET_CONTAINER);
     protected static final PathElement PATH_BUFFER_CACHE = PathElement.pathElement(Constants.BUFFER_CACHE);

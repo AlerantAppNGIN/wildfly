@@ -41,6 +41,7 @@ public interface Constants {
     String SOCKET_BINDING = "socket-binding";
     String PATH = "path";
     String HTTP_LISTENER = "http-listener";
+    String UDP_LISTENER = "udp-listener";
     String HTTPS_LISTENER = "https-listener";
     String LISTENER = "listener";
     String INSTANCE_ID = "instance-id";

@@ -34,6 +34,8 @@ import io.undertow.server.handlers.CanonicalPathHandler;
 import io.undertow.server.handlers.NameVirtualHostHandler;
 import io.undertow.server.handlers.ResponseCodeHandler;
 import io.undertow.server.handlers.error.SimpleErrorPageHandler;
+import io.undertow.server.handlers.udp.RootUdpHandler;
+
 import org.jboss.as.network.SocketBinding;
 import org.jboss.msc.inject.Injector;
 import org.jboss.msc.service.Service;
@@ -52,10 +54,11 @@ public class Server implements Service<Server> {
     private final InjectedValue<ServletContainerService> servletContainer = new InjectedValue<>();
     private final InjectedValue<UndertowService> undertowService = new InjectedValue<>();
     private volatile HttpHandler root;
+    private volatile RootUdpHandler rootUdpHandler;
     private final List<ListenerService<?>> listeners = new LinkedList<>();
     private final Set<Host> hosts = new CopyOnWriteArraySet<>();
 
-    private final HashMap<Integer,Integer> securePortMappings = new HashMap<>();
+    private final HashMap<Integer, Integer> securePortMappings = new HashMap<>();
 
     protected Server(String name, String defaultHost) {
         this.name = name;
@@ -67,6 +70,8 @@ public class Server implements Service<Server> {
         root = virtualHostHandler;
         root = new SimpleErrorPageHandler(root);
         root = new CanonicalPathHandler(root);
+
+        rootUdpHandler = new RootUdpHandler();
 
         UndertowLogger.ROOT_LOGGER.startedServer(name);
         undertowService.getValue().registerServer(this);
@@ -153,5 +158,9 @@ public class Server implements Service<Server> {
 
     public List<ListenerService<?>> getListeners() {
         return listeners;
+    }
+
+    public RootUdpHandler getRootUdpHandler() {
+        return rootUdpHandler;
     }
 }

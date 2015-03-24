@@ -82,6 +82,7 @@ class ServerAdd extends AbstractBoottimeAddStepHandler {
                     .setInitialMode(ServiceController.Mode.PASSIVE);
 
             addCommonHostListenerDeps(context, commonServerBuilder, UndertowExtension.HTTP_LISTENER_PATH);
+            addCommonHostListenerDeps(context, commonServerBuilder, UndertowExtension.UDP_LISTENER_PATH);
             addCommonHostListenerDeps(context, commonServerBuilder, UndertowExtension.AJP_LISTENER_PATH);
             addCommonHostListenerDeps(context, commonServerBuilder, UndertowExtension.HTTPS_LISTENER_PATH);
 
